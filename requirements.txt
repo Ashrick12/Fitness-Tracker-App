@@ -1,0 +1,4 @@
+json>=2.0.9
+PySimpleGUI>=4.55.1
+matplotlib>=3.5.1
+numpy>=1.22.1
