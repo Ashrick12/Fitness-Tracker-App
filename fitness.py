@@ -157,7 +157,7 @@ def strength():
 
         # Format the x axis to use date time
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d-%Y')) 
-        start_date = datetime(2024, 1, 17)  # Start date
+        start_date = datetime(2024, 1, 1)  # Start date
         end_date = datetime.today()  # End date
         ax.set_xlim(start_date, end_date) # Limit the x axis
         strengthFig.autofmt_xdate() # Update the graph
@@ -321,7 +321,7 @@ def cardio():
         # Set axis formatting and limits
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d-%Y'))
         cardioFig.autofmt_xdate()
-        start_date = datetime(2024, 1, 17)
+        start_date = datetime(2024, 1, 1)
         end_date = datetime.today()
         ax.set_ylim(0)
         ax.set_xlim(start_date, end_date)
@@ -493,7 +493,7 @@ def meditation():
         # Set axis formatting and limits
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d-%Y'))
         meditationFig.autofmt_xdate()
-        start_date = datetime(2024, 1, 17)
+        start_date = datetime(2024, 1, 1)
         end_date = datetime.today()
         ax.set_ylim(0)
         ax.set_xlim(start_date, end_date)
@@ -679,7 +679,7 @@ def main_menu():
         # Set axis formatting and limits for readability
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d-%Y'))
         weight_fig.autofmt_xdate()
-        start_date = datetime(2024, 1, 17)  # Assuming weight data starts from this date
+        start_date = datetime(2024, 1, 1)  # Assuming weight data starts from this date
         ax.set_xlim(start_date, datetime.today())
         plt.title('Weight History')
         plt.xlabel('Date')
