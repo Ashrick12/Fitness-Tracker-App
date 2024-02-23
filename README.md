@@ -2,6 +2,8 @@
 
 This is a Python fitness tracker application that helps you monitor your weight, strength training, cardio workouts, and meditation sessions. It provides a user-friendly interface to track your progress, analyze trends, and stay motivated on your fitness journey.
 
+![Fitness Tracker App](https://i.imgur.com/zb8Ns5W.png)
+
 ## Features
 
 ### Weight tracking:
