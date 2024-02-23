@@ -117,8 +117,11 @@ def strength():
         # Conversion from set to list
         exercises = list(exercises) 
         # Change default exercise for option menu
-        if default_exercise == '': 
-            default_exercise = exercises[len(exercises)-1]
+        try:
+            if default_exercise == '': 
+                default_exercise = exercises[len(exercises)-1]
+        except IndexError:
+            pass
         # Update option menu
         strengthWindow['OPTIONS'].update(values=exercises, value=default_exercise) 
 
@@ -134,23 +137,22 @@ def strength():
         divid2 = 0
         try:
             weights_reps = weight_repsList[selected_exercise]
-            
+            dates = datePerExercise[selected_exercise]
+            for i in range(len(dates)):
+                if week_ago <= dates[i] <= current_date:
+                    weekly += weights_reps[i]
+                    divid+=1
+            for i in range(len(dates)):
+                if weeks_ago <= dates[i] <= current_date:
+                    weekly2 += weights_reps[i]
+                    divid2+=1
+            if divid == 0:
+                divid = 1
+            if divid2 == 0:
+                divid2 = 1
+            strengthWindow['WEEKLY'].update(f'7 Day Average: {weekly/divid}\n30 Day Average: {weekly2/divid2}')
         except:
             pass
-        dates = datePerExercise[selected_exercise]
-        for i in range(len(dates)):
-            if week_ago <= dates[i] <= current_date:
-                weekly += weights_reps[i]
-                divid+=1
-        for i in range(len(dates)):
-            if weeks_ago <= dates[i] <= current_date:
-                weekly2 += weights_reps[i]
-                divid2+=1
-        if divid == 0:
-            divid = 1
-        if divid2 == 0:
-            divid2 = 1
-        strengthWindow['WEEKLY'].update(f'7 Day Average: {weekly/divid}\n30 Day Average: {weekly2/divid2}')
 
 
         # Format the x axis to use date time
