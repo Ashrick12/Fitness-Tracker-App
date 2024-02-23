@@ -25,18 +25,21 @@ This is a Python fitness tracker application that helps you monitor your weight,
 - Python 3.7 or later
 - PySimpleGui library
 - Matplotlib library
-- Additional libraries for specific features (details provided in the code)
 
 ## Installation
 1. Clone this repository:
 ```bash
 git clone https://github.com/ashrick12/fitness-tracker-app.git
 ```
-2. Install required libraries:
+2. Open fitness-tracker-app folder in python
+```
+cd fitness-tracker-app
+```
+3. Install required libraries:
 ```
 pip install -r requirements.txt
 ```
-3. Run the main script:
+4. Run the main script:
 ```
 python fitness.py
 ```
