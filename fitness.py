@@ -105,7 +105,8 @@ def strength():
             # Get each date for the exercise
             dates = [datetime.strptime(i['date'], '%m-%d-%Y') for i in exercise_data] 
             # Get the strength level for the exercises
-            weights_reps = [float(float(i['weight']) * float(i['reps']) / 10) for i in exercise_data] 
+            # weight / ( 1.0278 – 0.0278 × reps ) - 1 REP MAX EQUATION
+            weights_reps = [float(i['weight']) / (1.0278 - 0.0278 * float(i['reps'])) for i in exercise_data] 
             # Plot the exercise
             ax.plot(dates, weights_reps, marker='o', label=exercise) 
             weight_repsList.append(weights_reps)
@@ -150,7 +151,7 @@ def strength():
                 divid = 1
             if divid2 == 0:
                 divid2 = 1
-            strengthWindow['WEEKLY'].update(f'7 Day Average: {weekly/divid}\n30 Day Average: {weekly2/divid2}')
+            strengthWindow['WEEKLY'].update(f'7 Day Average: {weekly/divid:.2f}\n30 Day Average: {weekly2/divid2:.2f}')
         except:
             pass
 
@@ -321,7 +322,7 @@ def cardio():
         # Set axis formatting and limits
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d-%Y'))
         cardioFig.autofmt_xdate()
-        start_date = datetime(2024, 1, 1)
+        start_date = datetime(2024, 1, 17)
         end_date = datetime.today()
         ax.set_ylim(0)
         ax.set_xlim(start_date, end_date)
@@ -493,7 +494,7 @@ def meditation():
         # Set axis formatting and limits
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d-%Y'))
         meditationFig.autofmt_xdate()
-        start_date = datetime(2024, 1, 1)
+        start_date = datetime(2024, 1, 17)
         end_date = datetime.today()
         ax.set_ylim(0)
         ax.set_xlim(start_date, end_date)
@@ -671,7 +672,7 @@ def main_menu():
         monthly_count = max(monthly_count, 1)
 
         # Update the text elements displaying averages
-        mainmenuWindow['WEEKLY'].update(f'7 Day Average: {weekly_sum / weekly_count}\n30 Day Average: {monthly_sum / monthly_count}')
+        mainmenuWindow['WEEKLY'].update(f'7 Day Average: {weekly_sum / weekly_count:.2f}\n30 Day Average: {monthly_sum / monthly_count:.2f}')
 
         # Create a line plot showing weight history
         ax.plot(dates, weights, marker='o')
@@ -679,7 +680,7 @@ def main_menu():
         # Set axis formatting and limits for readability
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%d-%Y'))
         weight_fig.autofmt_xdate()
-        start_date = datetime(2024, 1, 1)  # Assuming weight data starts from this date
+        start_date = datetime(2024, 1, 17)  # Assuming weight data starts from this date
         ax.set_xlim(start_date, datetime.today())
         plt.title('Weight History')
         plt.xlabel('Date')
